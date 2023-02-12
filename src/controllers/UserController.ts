@@ -10,6 +10,8 @@ const UserController = {
         if (existingUser) {
             return res.status(400).json({ msg: "Email já cadastrado - Tente fazer login ou utilize outro email" });
         }
+
+
         try {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const createUserAccount = await UserModel.create({ email, password});
@@ -20,12 +22,15 @@ const UserController = {
         }
     },
 
+
     async loginUser(req: Request, res: Response) {
         const { email, password } = req.body;
         const user = await UserModel.findOne({ email });
         if (!user) {
             return res.status(404).json({ msg: "O email não foi encontrado" });
         }
+
+        
         try {
             const passwordIsValid = await bcrypt.compare(password, user.password);
             if (!passwordIsValid) {
