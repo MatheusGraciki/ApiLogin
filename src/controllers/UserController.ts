@@ -3,44 +3,65 @@ import { Request, Response } from "express";
 import bcrypt from 'bcrypt';
 
 const UserController = {
-
     async registerUser(req: Request, res: Response) {
-        const { email, password } = req.body;
-        const existingUser = await UserModel.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ msg: "Email já cadastrado - Tente fazer login ou utilize outro email" });
-        }
-
-
         try {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const createUserAccount = await UserModel.create({ email, password});
-            return res.status(201).json({ msg: "Conta criada com sucesso!"});
+            const { username, email, password } = req.body;
+            const userFound = await UserModel.find({ $or: [{ username }, { email }] });
             
-        } catch (error) {
-            return res.status(500).json({ msg: "Falha ao criar a conta.", error });
+            if (userFound.length > 0) {
+                const usernameFound = userFound[0].username;
+                const emailFound = userFound[0].email;
+                
+                const usernameExist = usernameFound === username;
+                const emailExist = emailFound === email;
+               
+                if (usernameExist){
+                    const errorMessage = "Este usuario já existe tente outro...";
+                    return res.status(409).json({ message: errorMessage });
+                }
+
+                else if (emailExist){
+                    const errorMessage = "Este email  já está em uso, tente outro ou faça login";
+                    return res.status(409).json({ message: errorMessage });
+                }
+            }
+            
+        
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const newUser = await UserModel.create({ username, email, password });
+            return res.status(201).json({ message: 'Conta criada com sucesso!' });
+        } 
+        catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: 'Erro ao criar a conta' });
         }
+          
     },
 
-
     async loginUser(req: Request, res: Response) {
-        const { email, password } = req.body;
-        const user = await UserModel.findOne({ email });
+        const { emailOrUsername, password,deviceToken } = req.body;
+        const user = await UserModel.findOne({ $or: [{ email: emailOrUsername }, { username: emailOrUsername }] });
+
         if (!user) {
-            return res.status(404).json({ msg: "O email não foi encontrado" });
+            return res.status(404).json({ message: "Usuário não encontrado" });
         }
 
-        
         try {
             const passwordIsValid = await bcrypt.compare(password, user.password);
-            if (!passwordIsValid) {
-                return res.status(401).json({ msg: "Senha inválida" });
+            if (passwordIsValid) {
+                if(deviceToken ){
+                    return res.status(200).json({ message: "Login realizado com sucesso!",username: user.username, token: deviceToken });
+                }
+                return res.status(200).json({ message: "Login realizado com sucesso!",username: user.username});
+                
             }
-            else{return res.status(200).json({ msg: "Login realizado com sucesso!" });}
+
+            return res.status(401).json({ message: "Senha inválida" });
         }
         catch (error) {
-            return res.status(500).json({ msg: "Erro ao fazer login.", error });
+            return res.status(500).json({ message: "Erro ao fazer login", error });
         }
+
     }
 };
 
