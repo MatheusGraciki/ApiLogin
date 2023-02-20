@@ -6,10 +6,22 @@ This API has been developed for my front-end project called 'ToDoList'. However,
 # Instructions to configurate the project
 ### Installation
 To get started, clone the project repository, navigate to the app folder directory, and proceed to install the necessary dependencies.
+Clone the project
 
 ```bash
-    cd ApiToDoList
-    npm install
+  git clone https://github.com/MatheusGraciki/ApiToDoList
+```
+
+Go to the project directory
+
+```bash
+  cd ApiToDoList
+```
+
+Install dependencies
+
+```bash
+  npm install
 ```
     
 ### Environment Variables
@@ -19,20 +31,25 @@ To run this project, you will need to add the following environment variables to
 `DATABASE_KEY`
 
 
-
 ### Demo of configuration  of the enviroment variables
-you also need follow the configuration of the video below
+You also need follow the configuration of the video below. 
 
-https://streamable.com/l657p8 
-The video quality may not be the best, but it is still sufficient to understand the process. 
-
+Before you watch the video, you need create an account and Sign In in MongoDB: https://www.mongodb.com/pt-br
 # Run the project
 After configurated the project
 
+Go to the project directory
+
 ```bash
-    cd ApiToDoList
-    npm run start
+  cd ApiToDoList
 ```
+
+Start the server
+
+```bash
+  npm run start
+```
+
 Now you can test the project following the "API Reference"
 ## API Reference
 
@@ -62,3 +79,9 @@ Now you can test the project following the "API Reference"
 
 
 
+
+
+## Roadmap
+
+- Create  todo crud routes 
+- Deploy the project
