@@ -2,6 +2,7 @@
 import { Request, Response } from 'express';
 import { userService } from '../services/userServices';
 import messages from '../utils/messages.json';
+
 class UserController {
   registerUser = async (req: Request, res: Response) => {
     const userCredentials = {
