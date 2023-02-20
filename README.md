@@ -6,6 +6,7 @@ This API has been developed for my front-end project called 'ToDoList'. However,
 # Instructions to configurate the project
 ### Installation
 To get started, clone the project repository, navigate to the app folder directory, and proceed to install the necessary dependencies.
+
 Clone the project
 
 ```bash
@@ -32,9 +33,13 @@ To run this project, you will need to add the following environment variables to
 
 
 ### Demo of configuration  of the enviroment variables
-You also need follow the configuration of the video below. 
-
 Before you watch the video, you need create an account and Sign In in MongoDB: https://www.mongodb.com/pt-br
+
+You also need follow the configuration of the video below
+
+https://streamable.com/l657p8 The video quality may not be the best, but I think it is still sufficient to understand the process. However, I apologize for the low quality. 
+
+
 # Run the project
 After configurated the project
 
