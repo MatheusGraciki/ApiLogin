@@ -1,40 +1,92 @@
 {
-    "env": {
-        "browser": true,
-        "node": true,
-        "es6": true
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "google"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended"
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "require-jsdoc": "off",
+    "no-console": "off",
+    "guard-for-in": "error",
+    "semi": [
+      "error",
+      "always"
     ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 8,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint"
+    "no-loop-func": "error",
+    "no-sync": "error",
+    "no-template-curly-in-string": "error",
+    "block-scoped-var": "error",
+    "dot-notation": "error",
+    "curly": [
+      "error",
+      "multi-line",
+      "consistent"
     ],
-    "rules": {
-        "no-console": "off",
-        "guard-for-in": "error",
-        "semi": [
-            "error",
-            "always"
-        ],
-        "no-loop-func": "error",
-        "no-sync": "error",
-        "no-template-curly-in-string": "error",
-        "block-scoped-var": "error",
-        "dot-notation": "error",
-        "curly": [
-            "error",
-            "multi-line",
-            "consistent"
-        ],
-        "indent": 2
-    }
+    "camelcase":"warn",
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "new-cap": ["error", { "newIsCap": true }],
+    "no-invalid-this": "error",
+    "prefer-const": "error",
+    "max-len": [
+      "error",
+      {
+        "code": 130,
+        "ignoreComments": true,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "no-magic-numbers": [
+      "error",
+      {
+        "ignore": [
+          -1,
+          0,
+          1,
+          2,
+          1000,
+          60,
+          24,
+          200,
+          201,
+          400,
+          401,
+          404,
+          409,
+          500
+        ]
+      }
+    ],
+    "no-lonely-if": "error",
+    "no-nested-ternary": "error",
+    "no-param-reassign": "error",
+    "no-use-before-define": "error",
+    "object-curly-spacing": ["error", "always"],
+    "quotes": ["error", "single"],
+    "arrow-body-style": ["error", "as-needed"],
+    "arrow-parens": ["error", "as-needed"],
+    "arrow-spacing": "error",
+    "func-names": ["error", "as-needed"],
+    "no-undef": "error",
+    "prefer-template": "error"
+    
+  }
 }
