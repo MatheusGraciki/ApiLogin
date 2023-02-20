@@ -35,6 +35,8 @@
     "@types/node": "^18.13.0",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "eslint": "^8.34.0",
+    "eslint-config-clean-code": "^8.0.0",
+    "eslint-config-google": "^0.14.0",
     "nodemon": "^2.0.20",
     "tsup": "^6.6.0",
     "tsx": "^3.12.3",
