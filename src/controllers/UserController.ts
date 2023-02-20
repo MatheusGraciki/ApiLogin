@@ -35,8 +35,11 @@ class UserController {
     try {
       const authenticateUser = await userService.authenticateUser(userCredentials);
 
-      authenticateUser.success? res.status(200).json({ message: authenticateUser.message }) :
+      if (authenticateUser.success) {
+        return res.status(200).json({ message: authenticateUser.message });
+      } else {
         res.status(404).json({ message: authenticateUser.message });
+      }
     } catch (error) {
       return res.status(500).json({ message: messages.LOGIN_ERROR, error });
     }
