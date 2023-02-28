@@ -34,6 +34,7 @@ class UserController {
 
     try {
       const authenticateUser = await userService.authenticateUser(userCredentials);
+
       if (authenticateUser.error) {
         res.status(404).json({ error: authenticateUser.error });
       }
@@ -41,7 +42,7 @@ class UserController {
         res.status(201).json({
           message: authenticationMessage.LOGIN_SUCCESSFUL, usernameOrEmail: authenticateUser.usernameOrEmail,
         });
-      }
+
     } catch (error) {
       return res.status(500).json({ message: authenticationMessage.LOGIN_ERROR, error });
     }
