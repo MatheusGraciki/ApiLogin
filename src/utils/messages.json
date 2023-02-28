@@ -1,0 +1,12 @@
+{
+  "authenticationMessage": {
+  "USERNAME_ALREADY_EXIST": "Este usuário já existe, tente outro...",
+  "EMAIL_ALREADY_EXIST": "Email já existe, tente outro email ou faça login",
+  "ACCOUNT_CREATED": "Conta criada com sucesso!",
+  "ACCOUNT_CREATION_ERROR": "Não foi possível criar a conta!",
+  "INVALID_CREDENTIALS": "Nome de usuário ou email incorretos, essa conta não existe",
+  "LOGIN_SUCCESSFUL": "Login realizado com sucesso!",
+  "LOGIN_ERROR": "Não foi possível conectar a sua conta!",
+  "INVALID_PASSWORD": "Senha inválida"
+},
+}

@@ -1,24 +1,39 @@
 
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-    email:{
-        type: 'string',
-        required: true,
-    },
-    password:{
-        type: 'string',
-        required: true,
-    },
+  username: {
+    type: 'string',
+    required: true,
+  },
+  email: {
+    type: 'string',
+    required: true,
+  },
+  password: {
+    type: 'string',
+    required: true,
+  },
+  deviceToken: {
+    type: 'string',
+  },
 },
-{timestamps:true,}
+{ timestamps: true },
 );
 
-const User = mongoose.model('User', UserSchema);
+// eslint-disable-next-line func-names
+UserSchema.pre('save', async function(next) {
+  const saltRounds = 10;
 
-export {UserSchema,User};
- 
+  // eslint-disable-next-line no-invalid-this
+  this.password = await bcrypt.hash(this.password, saltRounds);
+  next();
+});
 
+const UserModel = mongoose.model('User', UserSchema);
+
+export { UserSchema, UserModel };
 
