@@ -39,7 +39,7 @@ class UserController {
         res.status(404).json({ error: authenticateUser.error });
       }
       else {
-        res.status(201).json({
+        res.status(200).json({
           message: authenticationMessage.LOGIN_SUCCESSFUL, usernameOrEmail: authenticateUser.usernameOrEmail,
         });
       }
