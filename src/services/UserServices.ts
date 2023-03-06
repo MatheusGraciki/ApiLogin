@@ -23,7 +23,7 @@ interface RegistrationRequest {
 
 
 interface RegistrationResponse {
-  user: {
+  user?: {
     username: string;
     email: string;
     password: string;
@@ -77,18 +77,17 @@ class UserService {
     } catch (error:unknown) {
       console.error( `the error occurred in function createUser on archive userService.ts, error: ${error}` );
       console.log(error);
-      return ({ error: (error as Error).message, user: null });
+      return ({ error: (error as Error).message });
     }
   }
 
   // eslint-disable-next-line max-len
   public async authenticateUser({ usernameOrEmail, password }: AuthenticationRequest ): Promise<AuthenticationResponse> {
-    const User = await UserModel.findOne({ $or: [{ email: usernameOrEmail }, { username: usernameOrEmail }] });
-    if (!User) {
-      throw new Error(authenticationMessage.INVALID_CREDENTIALS);
-    }
-
     try {
+      const User = await UserModel.findOne({ $or: [{ email: usernameOrEmail }, { username: usernameOrEmail }] });
+      if (!User) {
+        throw new Error(authenticationMessage.INVALID_CREDENTIALS);
+      }
       const isValidPassword = await bcrypt.compare(password, User.password);
       if (isValidPassword) {
         return { usernameOrEmail: usernameOrEmail };
@@ -96,8 +95,7 @@ class UserService {
 
       throw new Error(authenticationMessage.INVALID_PASSWORD);
     } catch (error) {
-      console.error(`the error occurred in function authenticateUser on archive userService.ts, error: ${error}`);
-      return ({ error: authenticationMessage.LOGIN_ERROR });
+      return { error: (error as Error).message };
     }
   }
 }

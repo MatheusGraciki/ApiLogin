@@ -44,7 +44,9 @@ class UserController {
         });
       }
     } catch (error) {
-      return res.status(500).json({ message: authenticationMessage.LOGIN_ERROR, error });
+      console.log(error);
+      console.error('a error occurred in UserController, loginUser while login user', error);
+      return { error: authenticationMessage.ACCOUNT_CREATION_ERROR };
     }
   };
 }

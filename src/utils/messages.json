@@ -1,6 +1,6 @@
 {
   "authenticationMessage": {
-  "USERNAME_ALREADY_EXIST": "Este usuário já existe, tente outro...",
+  "USERNAME_ALREADY_EXIST": "Este  nome de usuário já existe, tente outro...",
   "EMAIL_ALREADY_EXIST": "Email já existe, tente outro email ou faça login",
   "ACCOUNT_CREATED": "Conta criada com sucesso!",
   "ACCOUNT_CREATION_ERROR": "Não foi possível criar a conta!",
