@@ -39,12 +39,14 @@ class UserController {
         res.status(404).json({ error: authenticateUser.error });
       }
       else {
-        res.status(201).json({
+        res.status(200).json({
           message: authenticationMessage.LOGIN_SUCCESSFUL, usernameOrEmail: authenticateUser.usernameOrEmail,
         });
       }
     } catch (error) {
-      return res.status(500).json({ message: authenticationMessage.LOGIN_ERROR, error });
+      console.log(error);
+      console.error('a error occurred in UserController, loginUser while login user', error);
+      return { error: authenticationMessage.ACCOUNT_CREATION_ERROR };
     }
   };
 }
