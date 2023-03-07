@@ -1,4 +1,5 @@
 {
+
   "authenticationMessage": {
   "USERNAME_ALREADY_EXIST": "Este  nome de usuário já existe, tente outro...",
   "EMAIL_ALREADY_EXIST": "Email já existe, tente outro email ou faça login",
@@ -8,5 +9,4 @@
   "LOGIN_SUCCESSFUL": "Login realizado com sucesso!",
   "LOGIN_ERROR": "Não foi possível conectar a sua conta!",
   "INVALID_PASSWORD": "Senha inválida"
-},
 }

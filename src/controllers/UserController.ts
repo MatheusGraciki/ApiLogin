@@ -22,6 +22,7 @@ class UserController {
     } catch (error) {
       console.error('a error occurred in UserController, registerUser while creating user', error);
       return { error: authenticationMessage.ACCOUNT_CREATION_ERROR };
+
     }
   };
 
