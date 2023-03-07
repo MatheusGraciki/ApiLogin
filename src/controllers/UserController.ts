@@ -1,7 +1,7 @@
 /* eslint-disable brace-style */
 import { Request, Response } from 'express';
-import { userService } from '../services/UserServices';
-import { authenticationMessage } from '../utils/messages.json';
+import { userService } from '../services/userServices';
+import messages from '../utils/messages.json';
 
 class UserController {
   registerUser = async (req: Request, res: Response) => {
@@ -12,17 +12,16 @@ class UserController {
     };
 
     try {
-      // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
       const newUser = await userService.createUser(userCredentials);
-      if (newUser.error) {
-        return res.status(409).json({ error: newUser.error });}
-      else {
-        return res.status(201).json({ error: authenticationMessage.ACCOUNT_CREATED });
-      }
-    } catch (error) {
-      console.error('a error occurred in UserController, registerUser while creating user', error);
-      return { error: authenticationMessage.ACCOUNT_CREATION_ERROR };
 
+      if (newUser.success) {
+        return res.status(201).json({ message: newUser.message });
+      } else {
+        return res.status(409).json({ message: newUser.message });
+      }
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: messages.ACCOUNT_CREATION_ERROR });
     }
   };
 
@@ -36,18 +35,10 @@ class UserController {
     try {
       const authenticateUser = await userService.authenticateUser(userCredentials);
 
-      if (authenticateUser.error) {
-        res.status(404).json({ error: authenticateUser.error });
-      }
-      else {
-        res.status(200).json({
-          message: authenticationMessage.LOGIN_SUCCESSFUL, usernameOrEmail: authenticateUser.usernameOrEmail,
-        });
-      }
+      authenticateUser.success? res.status(200).json({ message: authenticateUser.message }) :
+        res.status(404).json({ message: authenticateUser.message });
     } catch (error) {
-      console.log(error);
-      console.error('a error occurred in UserController, loginUser while login user', error);
-      return { error: authenticationMessage.ACCOUNT_CREATION_ERROR };
+      return res.status(500).json({ message: messages.LOGIN_ERROR, error });
     }
   };
 }
