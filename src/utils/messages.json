@@ -9,4 +9,5 @@
   "LOGIN_SUCCESSFUL": "Login realizado com sucesso!",
   "LOGIN_ERROR": "Não foi possível conectar a sua conta!",
   "INVALID_PASSWORD": "Senha inválida"
+  }
 }
