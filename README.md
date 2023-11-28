@@ -1,5 +1,5 @@
 
-# API-ToDoList
+# API-Login
 
 This API has been developed for my front-end project called 'ToDoList'. However, if you're looking for an API to handle user registration/login, feel free to use it if you find it useful for building a to-do app. In a near future, I plan to deploy this API on Google Cloud or Heroku.
 
