@@ -10,13 +10,13 @@ To get started, clone the project repository, navigate to the app folder directo
 Clone the project
 
 ```bash
-  git clone https://github.com/MatheusGraciki/ApiToDoList
+  git clone https://github.com/MatheusGraciki/ApiLogin
 ```
 
 Go to the project directory
 
 ```bash
-  cd ApiToDoList
+  cd ApiLogin
 ```
 
 Install dependencies
@@ -46,7 +46,7 @@ After configurated the project
 Go to the project directory
 
 ```bash
-  cd ApiToDoList
+  cd ApiLogin
 ```
 
 Start the server
